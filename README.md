@@ -43,10 +43,13 @@ To use the HTML Minification for Razor, you have to change your <code>Views/Web.
 &lt;/configuration>
 </pre>
 
-The HtmlOptimizer behavior can be configured in the application's root <code>Web.config</code> with some appSettings keys:
+<p>The HtmlOptimizer behavior can be configured in the application's root <code>Web.config</code> with some appSettings keys:<br>
+Aggressive - remove maximum delimeters<br>
+Comments - strip html comments</p>
 
 <pre>
 &lt;appSettings>
-  &lt;add key="html-minifier" value="true" />
+  &lt;add key="html-minifier: Aggressive" value="true" />
+  &lt;add key="html-minifier: Comments" value="true" />
 &lt;/appSettings>
 </pre>
