@@ -43,9 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Minifier\MinifierFactory.cs" />
+    <Compile Include="Minifier\MelezeWebMinifier.cs" />
+    <Compile Include="Minifier\HtmlOptimizerMinifierSimple.cs" />
     <Compile Include="HtmlOptimizerMvc4CSharpRazorCodeGenerator.cs" />
     <Compile Include="HtmlOptimizerMvc4WebPageRazorHost.cs" />
     <Compile Include="HtmlOptimizerMvc4WebRazorHostFactory.cs" />
+    <Compile Include="Minifier\HtmlOptimizerMinifierWrapper.cs" />
+    <Compile Include="Minifier\IMinifier.cs" />
+    <Compile Include="Minifier\MelezeWebMinifierState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

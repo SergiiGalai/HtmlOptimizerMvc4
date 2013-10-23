@@ -1,4 +1,5 @@
 ﻿@{
+  ViewBag.ModelContentOfPre = "sadf";
     ViewBag.Title = "Home Page";
 }
 @section featured {
@@ -15,6 +16,7 @@
         </div>
     </section>
 }
+<!--comment in the text-->
 <h3>We suggest the following:</h3>
 <ol class="round">
     <li class="one">
@@ -34,9 +36,25 @@
     </li>
 
     <li class="three">
-        <h5>Find Web Hosting</h5>
-        You can easily find a web hosting company that offers the right mix of features
-        and price for your applications.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
+      <pre>
+        Formatting in PRE elements
+        must be preserved
+        
+        ANYWAY
+      </pre>
+      <pre> 
+        @ViewBag.ModelContentOfPre
+        Some other text
+      </pre>
     </li>
 </ol>
+@section scripts
+{
+  <script type="text/javascript">
+    //<![CDATA[
+    jQuery(document).ready(function () {
+      $("#login").hide();
+    });
+    //]]>
+</script>
+}

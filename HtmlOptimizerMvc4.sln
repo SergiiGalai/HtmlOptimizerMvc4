@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlOptimizerMvc4", "HtmlOp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc4RazorSample", "Mvc4RazorSample\Mvc4RazorSample.csproj", "{A138A55E-1D7F-4449-B961-F1B9B316735D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlOptimizerMvc4Tests", "HtmlOptimizerMvc4Tests\HtmlOptimizerMvc4Tests.csproj", "{AB137541-DCC0-4105-A5BF-8EC35180D514}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{A138A55E-1D7F-4449-B961-F1B9B316735D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A138A55E-1D7F-4449-B961-F1B9B316735D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A138A55E-1D7F-4449-B961-F1B9B316735D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB137541-DCC0-4105-A5BF-8EC35180D514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB137541-DCC0-4105-A5BF-8EC35180D514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB137541-DCC0-4105-A5BF-8EC35180D514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB137541-DCC0-4105-A5BF-8EC35180D514}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
