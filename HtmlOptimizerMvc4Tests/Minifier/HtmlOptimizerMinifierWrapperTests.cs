@@ -19,6 +19,25 @@ namespace HtmlOptimizerMvc4.Tests
       Assert.AreEqual("class=\"content-wrapper\"", actual);
     }
 
+
+    [TestMethod()]
+    public void MinifyScript()
+    {
+      const string src1 = "<script";
+
+      var target = new HtmlOptimizerMinifierWrapper();
+      target.Init(true, true);
+
+      var actual = target.Minify(src1);
+      Assert.AreEqual(src1, actual);
+
+
+      target.Init(false, true);
+
+      actual = target.Minify(src1);
+      Assert.AreEqual(src1, actual);
+    }
+
     [TestMethod()]
     public void MinifyDiv()
     {
@@ -198,5 +217,6 @@ namespace HtmlOptimizerMvc4.Tests
       actual = target.Minify(src3);
       Assert.AreEqual("></script>\r\n  <![endif]-->", actual);
     }
+
   }
 }

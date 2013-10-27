@@ -192,7 +192,10 @@ namespace HtmlOptimizerMvc4
           previousIsWhiteSpace = MinifySafelyHtmlBlock(jsContent, builder, previousIsWhiteSpace, state.InsidePre);
         },
         htmlContent => ProcessTag("pre", htmlContent, state.InsidePre,
-          preContent => builder.Append(preContent),
+          preContent =>
+          {
+            builder.Append(preContent);
+          },
           htmlPreContent =>
           {
             var tokens = htmlPreContent.Split(WhiteSpaceSeparators, StringSplitOptions.RemoveEmptyEntries);
@@ -255,44 +258,49 @@ namespace HtmlOptimizerMvc4
       string content, bool insideTag,
       Action<string> insideTagAction, Action<string> outsideTagAction)
     {
-      var istart = 0;
-      while (istart < content.Length)
+      var itag = 0;
+      while (itag < content.Length)
       {
-        var ipreStart = istart == 0 && insideTag ? 0 : content.IndexOf(startTag, istart);
-        var ipreEnd = content.IndexOf(endTag, istart);
+        var itagStart = itag == 0 && insideTag ? 0 : content.IndexOf(startTag, itag);
+        var itagEnd = content.IndexOf(endTag, itag);
 
-        if (istart > 0 && (!insideTag || ipreEnd >= 0))
-          insideTag = ipreStart >= 0 && ipreStart >= ipreEnd;
+        if (itag > 0 && (!insideTag || itagEnd >= 0))
+          insideTag = itagStart >= 0 && itagStart >= itagEnd;
 
-        if (insideTag && (ipreEnd < 0))
-          ipreEnd = content.Length;
+        if (insideTag && (itagEnd < 0))
+          itagEnd = content.Length;
 
-        if (ipreStart < 0)
-          ipreStart = content.Length;
+        if (itagStart < 0)
+          itagStart = content.Length;
 
-        if (insideTag || (ipreStart == istart))
+        if (insideTag || (itagStart == itag))
         {
-          if (ipreEnd < content.Length)
-            ipreEnd += endTag.Length;
+
+          if (itagEnd < content.Length)
+          {
+            //for case when content equals start tag item
+            itagEnd += content.Length < endTag.Length ? content.Length + 1 : endTag.Length;
+          }
+            
 
           if (insideTagAction != null)
           {
-            var tagContent = content.Substring(ipreStart, ipreEnd - ipreStart);
+            var tagContent = content.Substring(itagStart, itagEnd - itagStart);
             insideTagAction(tagContent);
           }
 
-          istart = ipreEnd;
+          itag = itagEnd;
           insideTag = false;
         }
         else
         {
           if (outsideTagAction != null)
           {
-            var outContent = content.Substring(istart, ipreStart - istart);
+            var outContent = content.Substring(itag, itagStart - itag);
             outsideTagAction(outContent);
           }
 
-          istart = ipreStart;
+          itag = itagStart;
         }
       }
     }
